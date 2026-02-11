@@ -1,0 +1,21 @@
+-- TASK 3.1: TOP SPENDERS
+SELECT c3 AS CustomerID, SUM(c14) AS TotalSpent
+FROM Orders
+WHERE c3 != 'CustomerID'
+GROUP BY c3
+ORDER BY TotalSpent DESC
+LIMIT 5;
+
+-- TASK 3.2: REGIONAL SALES
+-- Since your data uses addresses, we group by address to show sales per area
+SELECT c7 AS Region, SUM(c14) AS TotalSales
+FROM Orders
+WHERE c7 != 'ShippingAddress'
+GROUP BY c7
+LIMIT 10;
+
+-- TASK 3.3: STOCK ALERT
+-- This finds products with a quantity less than 10
+SELECT c4 AS Product, c5 AS StockQuantity
+FROM Orders
+WHERE c5 < 10 AND c5 != 'Quantity';
